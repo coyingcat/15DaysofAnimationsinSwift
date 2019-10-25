@@ -2,6 +2,8 @@
 Swift，学习动画，升级原版本 ， arrynatalicio/15DaysofAnimationsinSwift
 
 
+[博客链接： 11 个例子，由浅到深，学习 iOS 动画]](https://juejin.im/post/5db30098e51d452a091fe16b)
+
 
 
 ![Alt text](https://raw.githubusercontent.com/coyingcat/15DaysofAnimationsinSwift/master/github-cover-image.png)
