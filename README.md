@@ -16,7 +16,7 @@ Swift，学习动画，升级原版本 ， arrynatalicio/15DaysofAnimationsinSwi
 
 Animation 01 - [NavigationBarAnimation](https://github.com/coyingcat/15DaysofAnimationsinSwift/blob/master/Animation%2001%20-%20NavigationBarAnimation/NavigationBarAnimation.gif)
 
-![Alt text](https://raw.githubusercontent.com/coyingcat/15DaysofAnimationsinSwift/master/Animation%2001%20-%20NavigationBarAnimation/NavigationBarAnimation.gif)
+![Alt text](https://raw.githubusercontent.com/coyingcat/15DaysofAnimationsinSwift/master/Anima%2001%20-%20NavigationBar/NavigationBarAnimation.gif)
 
 Animation 02 - [LockScreenAnimation](https://github.com/coyingcat/15DaysofAnimationsinSwift/tree/master/Animation%2002%20-%20LockScreenAnimation)
 
