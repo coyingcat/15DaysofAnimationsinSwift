@@ -35,9 +35,7 @@ struct SolarSystem: View {
 
   var body: some View {
     GeometryReader { geometry in
-      self.makeSystem(geometry) {
-          animationFlag.toggle()
-      }
+      self.makeSystem(geometry)
     }
   }
 
@@ -48,13 +46,16 @@ struct SolarSystem: View {
              height: planetSize + radiusIncrement * index)
   }
 
-  func moon(moonSize: CGFloat) -> some View {
+  func moon(planetSize: CGFloat,
+            moonSize: CGFloat,
+            radiusIncrement: CGFloat,
+            index: CGFloat) -> some View {
     return Circle()
       .fill(Color.orange)
       .frame(width: moonSize, height: moonSize)
   }
 
-  func makeSystem(_ geometry: GeometryProxy, action completionHandler: @escaping () -> Void) -> some View {
+  func makeSystem(_ geometry: GeometryProxy) -> some View {
     let planetSize = geometry.size.height * 0.25
     let moonSize = geometry.size.height * 0.1
     let radiusIncrement = (geometry.size.height - planetSize - moonSize) / CGFloat(moons.count)
@@ -71,18 +72,18 @@ struct SolarSystem: View {
         }
         ForEach(range, id: \.self) { index in
           // individual "moon" circles
-          self.moon(moonSize: moonSize)
+          self.moon(planetSize: planetSize, moonSize: moonSize, radiusIncrement: radiusIncrement, index: CGFloat(index))
               .modifier(self.makeOrbitEffect(
                 diameter: planetSize + radiusIncrement * CGFloat(index)
               ))
-            .onAppear {
-                withAnimation(Animation
-                                .linear(duration: Double.random(in: 10 ... 100))
-                                .repeatForever(autoreverses: false)) {
-                    completionHandler()
-                }
-            }
+              .animation(Animation
+                .linear(duration: Double.random(in: 10 ... 100))
+                .repeatForever(autoreverses: false)
+              )
         }
+    }
+    .onAppear {
+      self.animationFlag.toggle()
     }
   }
 
