@@ -33,7 +33,7 @@ extension AnyTransition {
     let insertion = AnyTransition.move(edge: .top)
       .combined(with: .scale(scale: 0.2, anchor: .topTrailing))
       .combined(with: .opacity)
-    let removal = AnyTransition.move(edge: .top)
+    let removal = AnyTransition.move(edge: .top).combined(with: .opacity)
     return .asymmetric(insertion: insertion, removal: removal)
   }
 }
