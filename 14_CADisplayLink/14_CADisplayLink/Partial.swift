@@ -49,17 +49,19 @@ class Partial: UIView {
         
         var selectedIndex: Int?
         
+        var needsReset: Bool?
+        
         var currentIndex: Int?{
-            if lastSelectedIndex != nil{
-                return lastSelectedIndex
+            if needsReset == nil{
+                return selectedIndex
             }
             else{
-                return selectedIndex
+                return lastSelectedIndex
             }
         }
     }
     
-    
+    var intervals = 0
     
     var animating = false
     var timer: CADisplayLink!
@@ -67,8 +69,6 @@ class Partial: UIView {
     let selectInfo = SelectUtil()
     
     let helper: Helper
-    
-    var needsReset = false
     
     override init(frame: CGRect) {
         helper = Helper(lasting: 3)
@@ -87,6 +87,9 @@ class Partial: UIView {
     
     func startAnimation(_ idx: Int){
         guard selectInfo.selectedIndex != idx else { return }
+        if selectInfo.selectedIndex != nil{
+            selectInfo.needsReset = true
+        }
         animating = true
         selectInfo.selectedIndex = idx
         helper.reset()
@@ -101,7 +104,7 @@ class Partial: UIView {
         let height = rect.height
         let topY: CGFloat = 100
         var progress = helper.progressPositive
-        if needsReset{
+        if selectInfo.needsReset == true{
             progress = helper.progressNegative
         }
         let deltaHeight = -1 * topY * progress
@@ -141,15 +144,20 @@ class Partial: UIView {
     
     
     @objc func tick(){
-        guard animating, helper.count >= 0 else {
-            if needsReset{
-                selectInfo.lastSelectedIndex = selectInfo.selectedIndex
+        guard animating else {   return   }
+        
+        guard helper.count >= 0 else {  return }
+            
+            
+        guard helper.count >= 0 else {
+            if selectInfo.needsReset == true{
+                selectInfo.needsReset = false
                 helper.reset()
             }
             else{
-                selectInfo.selectedIndex = nil
                 animating = false
             }
+            selectInfo.lastSelectedIndex = selectInfo.selectedIndex
             return
         }
         helper.count -= 1
