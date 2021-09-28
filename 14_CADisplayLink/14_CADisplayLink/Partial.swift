@@ -33,9 +33,13 @@ class Partial: UIView {
             count = total
         }
         
-        var progress: CGFloat{
+        var progressPositive: CGFloat{
             let rest = total - count
             return CGFloat(rest / total)
+        }
+        
+        var progressNegative: CGFloat{
+            return CGFloat(count / total)
         }
     }
     
@@ -47,6 +51,8 @@ class Partial: UIView {
     var selectedIndex: Int?
     
     let helper: Helper
+    
+    var needsReset = false
     
     override init(frame: CGRect) {
         helper = Helper(lasting: 3)
@@ -78,7 +84,11 @@ class Partial: UIView {
 
         let height = rect.height
         let topY: CGFloat = 100
-        let deltaHeight = -1 * topY * helper.progress
+        var progress = helper.progressPositive
+        if needsReset{
+            progress = helper.progressNegative
+        }
+        let deltaHeight = -1 * topY * progress
         
         // print("delta: \(deltaHeight)")
         
@@ -95,7 +105,7 @@ class Partial: UIView {
         let path = UIBezierPath()
         UIColor.blue.setFill()
         path.move(to: topLeft)
-        switch selectedIndex{
+        switch lastSelectedIndex{
         case 0:
             path.addQuadCurve(to: topMid, controlPoint: CGPoint(x: fourthLhs, y: deltaHeight))
         case 1:
@@ -116,7 +126,13 @@ class Partial: UIView {
     
     @objc func tick(){
         guard animating, helper.count >= 0 else {
-            animating = false
+            if needsReset{
+                lastSelectedIndex = selectedIndex
+                helper.reset()
+            }
+            else{
+                animating = false
+            }
             return
         }
         helper.count -= 1
