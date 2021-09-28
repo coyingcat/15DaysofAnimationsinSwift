@@ -18,11 +18,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var partial: Partial!
     
     
-    
-    
-    var animating = false
-    
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,18 +42,7 @@ class ViewController: UIViewController {
 
     @IBAction func toAnimate(_ sender: Any) {
         
-        
-        
-        
-        jellyAnimate()
-    }
-    
-    
-    
-    func jellyAnimate(){
-        guard !animating else{ return }
-        animating = true
-        
+        guard !jelly.animating else{ return }
         let from = view.bounds.height - jelly.bounds.height / 2
         let to: CGFloat = 100
         jelly.backgroundColor = UIColor.clear
@@ -68,7 +52,6 @@ class ViewController: UIViewController {
             self.jelly.center = CGPoint(x: self.jelly.center.x, y: to)
         } completion: { _ in
             self.jelly.completeAnimation()
-            self.animating = false
         }
     }
     
