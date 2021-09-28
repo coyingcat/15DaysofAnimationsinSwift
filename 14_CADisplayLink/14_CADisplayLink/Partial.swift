@@ -54,13 +54,14 @@ class Partial: UIView {
         let rest = total - count
         let progress: CGFloat = CGFloat(rest / total)
         let height = rect.height
-        let deltaHeight = 100 * progress
+        let topY: CGFloat = 100
+        let deltaHeight = -1 * topY * progress
         
         // print("delta: \(deltaHeight)")
         
-        let topLeft = CGPoint(x: 0, y: 0)
-        let topMid = CGPoint(x: rect.width / 2, y: 0)
-        let topRight = CGPoint(x: rect.width, y: 0)
+        let topLeft = CGPoint(x: 0, y: topY)
+        let topMid = CGPoint(x: rect.width / 2, y: topY)
+        let topRight = CGPoint(x: rect.width, y: topY)
         
         let fourthLhs = rect.width / 4
         let fourthRhs = rect.width * 3 / 4

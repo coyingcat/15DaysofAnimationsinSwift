@@ -28,10 +28,12 @@ class ViewController: UIViewController {
         let tap = UITapGestureRecognizer()
         partial.addGestureRecognizer(tap)
         partial.isUserInteractionEnabled = true
+        partial.clipsToBounds = false
         tap.addTarget(self, action: #selector(ViewController.tap(with:)))
         
         
-        
+        partial.layer.debug()
+        jelly.layer.debug()
         
     }
     
@@ -68,3 +70,12 @@ class ViewController: UIViewController {
     
 }
 
+
+
+
+extension CALayer{
+    func debug(){
+        borderColor = UIColor.red.cgColor
+        borderWidth = 5
+    }
+}
