@@ -25,7 +25,10 @@ class ViewController: UIViewController {
         
         view.backgroundColor = UIColor.white
         
-        
+        let tap = UITapGestureRecognizer()
+        partial.addGestureRecognizer(tap)
+        partial.isUserInteractionEnabled = true
+        tap.addTarget(self, action: #selector(ViewController.tap(with:)))
         
         
         
@@ -35,7 +38,15 @@ class ViewController: UIViewController {
     
     
     
-    
+    @objc func tap(with gesture: UITapGestureRecognizer){
+        guard !jelly.animating else{ return }
+        let point = gesture.location(in: partial)
+        let width = partial.frame.width
+        let isRight = point.x > width / 2
+        let idx = isRight ? 1 : 0
+        partial.backgroundColor = UIColor.clear
+        partial.startAnimation(idx)
+    }
     
     
     

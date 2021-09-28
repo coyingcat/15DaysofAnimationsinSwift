@@ -14,6 +14,11 @@ class Partial: UIView {
     
     var timer: CADisplayLink!
     
+    let duration: TimeInterval = 3
+    
+    var lastSelectedIndex: Int?
+    var selectedIndex: Int?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         timer = CADisplayLink(target: self, selector: #selector(JellyView.tick))
@@ -25,15 +30,13 @@ class Partial: UIView {
         timer = CADisplayLink(target: self, selector: #selector(JellyView.tick))
     }
     
-    func startAnimation(){
+    func startAnimation(_ idx: Int){
+        guard selectedIndex != idx else { return }
         animating = true
+        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
+            self.animating = false
+        }
     }
-    
-    
-    func completeAnimation(){
-        animating = false
-    }
-    
     
     
     // Only override draw() if you perform custom drawing.
@@ -52,14 +55,16 @@ class Partial: UIView {
         
         // print("delta: \(deltaHeight)")
         
-        let topLeft = CGPoint(x: 0, y: deltaHeight)
-        let topRight = CGPoint(x: rect.width, y: deltaHeight)
+        let topLeft = CGPoint(x: 0, y: 0)
+        let topFourthLhs = CGPoint(x: rect.width / 4, y: 0)
+        let topFourthRhs = CGPoint(x: rect.width * 3 / 4, y: 0)
+        let topRight = CGPoint(x: rect.width, y: 0)
         let bottomLeft = CGPoint(x: 0, y: height)
         let bottomRight = CGPoint(x: rect.width, y: height)
         let path = UIBezierPath()
         UIColor.blue.setFill()
         path.move(to: topLeft)
-        path.addQuadCurve(to: topRight, controlPoint: CGPoint(x: rect.midX, y: 0))
+        path.addQuadCurve(to: topFourthLhs, controlPoint: CGPoint(x: rect.midX, y: 0))
         path.addLine(to: bottomRight)
         path.addQuadCurve(to: bottomLeft, controlPoint: CGPoint(x: rect.midX, y: height - deltaHeight))
         path.close()
@@ -70,6 +75,7 @@ class Partial: UIView {
     
     
     @objc func tick(){
+        guard animating else {return}
         setNeedsDisplay()
     }
     
