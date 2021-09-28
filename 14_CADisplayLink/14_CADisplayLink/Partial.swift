@@ -56,17 +56,22 @@ class Partial: UIView {
         // print("delta: \(deltaHeight)")
         
         let topLeft = CGPoint(x: 0, y: 0)
-        let topFourthLhs = CGPoint(x: rect.width / 4, y: 0)
-        let topFourthRhs = CGPoint(x: rect.width * 3 / 4, y: 0)
+        let topMid = CGPoint(x: rect.width / 2, y: 0)
         let topRight = CGPoint(x: rect.width, y: 0)
+        
+        let fourthLhs = rect.width / 4
+        let fourthRhs = rect.width * 3 / 4
+        
+        
         let bottomLeft = CGPoint(x: 0, y: height)
         let bottomRight = CGPoint(x: rect.width, y: height)
         let path = UIBezierPath()
         UIColor.blue.setFill()
         path.move(to: topLeft)
-        path.addQuadCurve(to: topFourthLhs, controlPoint: CGPoint(x: rect.midX, y: 0))
+        path.addQuadCurve(to: topMid, controlPoint: CGPoint(x: fourthLhs, y: deltaHeight))
+        path.addLine(to: topRight)
         path.addLine(to: bottomRight)
-        path.addQuadCurve(to: bottomLeft, controlPoint: CGPoint(x: rect.midX, y: height - deltaHeight))
+        path.addLine(to: bottomLeft)
         path.close()
         path.fill()
         
