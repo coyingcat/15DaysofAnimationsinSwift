@@ -44,11 +44,27 @@ class Partial: UIView {
     }
     
     
+    class SelectUtil{
+        var lastSelectedIndex: Int?
+        
+        var selectedIndex: Int?
+        
+        var currentIndex: Int?{
+            if lastSelectedIndex != nil{
+                return lastSelectedIndex
+            }
+            else{
+                return selectedIndex
+            }
+        }
+    }
+    
+    
+    
     var animating = false
     var timer: CADisplayLink!
     
-    var lastSelectedIndex: Int?
-    var selectedIndex: Int?
+    let selectInfo = SelectUtil()
     
     let helper: Helper
     
@@ -70,9 +86,9 @@ class Partial: UIView {
     }
     
     func startAnimation(_ idx: Int){
-        guard selectedIndex != idx else { return }
+        guard selectInfo.selectedIndex != idx else { return }
         animating = true
-        selectedIndex = idx
+        selectInfo.selectedIndex = idx
         helper.reset()
     }
     
@@ -105,7 +121,7 @@ class Partial: UIView {
         let path = UIBezierPath()
         UIColor.blue.setFill()
         path.move(to: topLeft)
-        switch lastSelectedIndex{
+        switch selectInfo.currentIndex{
         case 0:
             path.addQuadCurve(to: topMid, controlPoint: CGPoint(x: fourthLhs, y: deltaHeight))
         case 1:
@@ -127,10 +143,11 @@ class Partial: UIView {
     @objc func tick(){
         guard animating, helper.count >= 0 else {
             if needsReset{
-                lastSelectedIndex = selectedIndex
+                selectInfo.lastSelectedIndex = selectInfo.selectedIndex
                 helper.reset()
             }
             else{
+                selectInfo.selectedIndex = nil
                 animating = false
             }
             return
