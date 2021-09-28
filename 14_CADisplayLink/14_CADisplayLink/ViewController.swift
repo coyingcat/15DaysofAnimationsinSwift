@@ -15,6 +15,11 @@ class ViewController: UIViewController {
     
     
     
+    @IBOutlet weak var partial: Partial!
+    
+    
+    
+    
     var animating = false
     
     
@@ -42,6 +47,15 @@ class ViewController: UIViewController {
 
     @IBAction func toAnimate(_ sender: Any) {
         
+        
+        
+        
+        jellyAnimate()
+    }
+    
+    
+    
+    func jellyAnimate(){
         guard !animating else{ return }
         animating = true
         
@@ -56,7 +70,6 @@ class ViewController: UIViewController {
             self.jelly.completeAnimation()
             self.animating = false
         }
-
     }
     
 }

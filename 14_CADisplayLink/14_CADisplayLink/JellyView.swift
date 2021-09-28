@@ -7,21 +7,24 @@
 
 import UIKit
 
-class JellyView: UIView {
+class Helper{
     
-    class Helper{
-        
-        let displayLink: CADisplayLink
-        let from: CGFloat
-        let to: CGFloat
-        
-        internal init(displayLink: CADisplayLink, from: CGFloat, to: CGFloat) {
-            self.displayLink = displayLink
-            self.from = from
-            self.to = to
-            self.displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
-        }
+    let displayLink: CADisplayLink
+    let from: CGFloat
+    let to: CGFloat
+    let len: CGFloat
+    
+    internal init(displayLink: CADisplayLink, from: CGFloat, to: CGFloat) {
+        self.displayLink = displayLink
+        self.from = from
+        self.to = to
+        self.displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
+        len = from - to
     }
+}
+
+
+class JellyView: UIView {
     
     var animating = false
     
@@ -49,13 +52,12 @@ class JellyView: UIView {
         
         var progress: CGFloat = 1
         if animating{
-            progress = 1 - (layer.position.y - info.to) / (info.from - info.to)
+            progress = 1 - (layer.position.y - info.to) / (info.len)
         }
         let height = rect.height
-        let deltaHeight = height / 2 * (0.5 - abs(progress - 0.5))
-        // let deltaHeight = height * (1 - abs(progress)) * 0.6
+        let deltaHeight = height * (1 - abs(progress)) * 0.6
         
-        print("delta: \(deltaHeight)")
+        // print("delta: \(deltaHeight)")
         
         let topLeft = CGPoint(x: 0, y: deltaHeight)
         let topRight = CGPoint(x: rect.width, y: deltaHeight)

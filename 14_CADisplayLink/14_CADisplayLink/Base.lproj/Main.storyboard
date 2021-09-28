@@ -36,28 +36,42 @@
                                     <constraint firstAttribute="height" constant="100" id="FKQ-nB-8hG"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v5v-RD-7tu" customClass="Partial" customModule="_4_CADisplayLink" customModuleProvider="target">
+                                <rect key="frame" x="20" y="388" width="374" height="130"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="130" id="V7a-Fg-W7R"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="v5v-RD-7tu" secondAttribute="trailing" constant="20" id="3i1-7w-Onc"/>
                             <constraint firstItem="axz-Fq-VPN" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-50" id="Eld-Ko-K4a"/>
                             <constraint firstItem="4ml-iw-Bl5" firstAttribute="centerX" secondItem="axz-Fq-VPN" secondAttribute="centerX" id="JVf-qn-oCC"/>
                             <constraint firstItem="axz-Fq-VPN" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="MsP-T1-6fl"/>
                             <constraint firstItem="axz-Fq-VPN" firstAttribute="top" secondItem="4ml-iw-Bl5" secondAttribute="bottom" constant="10" id="OqS-y8-nNU"/>
+                            <constraint firstItem="v5v-RD-7tu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="TFV-v5-y4l"/>
+                            <constraint firstItem="v5v-RD-7tu" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="dX6-YB-4fb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="jelly" destination="4ml-iw-Bl5" id="6VX-Ye-Z8e"/>
+                        <outlet property="partial" destination="v5v-RD-7tu" id="pdo-Uh-k5J"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="114" y="80"/>
+            <point key="canvasLocation" x="113.04347826086958" y="79.6875"/>
         </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
