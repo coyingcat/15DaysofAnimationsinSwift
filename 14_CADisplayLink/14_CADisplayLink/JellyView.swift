@@ -7,24 +7,27 @@
 
 import UIKit
 
-class Helper{
-    
-    let displayLink: CADisplayLink
-    let from: CGFloat
-    let to: CGFloat
-    let len: CGFloat
-    
-    internal init(displayLink: CADisplayLink, from: CGFloat, to: CGFloat) {
-        self.displayLink = displayLink
-        self.from = from
-        self.to = to
-        self.displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
-        len = from - to
-    }
-}
+
 
 
 class JellyView: UIView {
+    
+    class Helper{
+        
+        let displayLink: CADisplayLink
+        let from: CGFloat
+        let to: CGFloat
+        let len: CGFloat
+        
+        internal init(displayLink: CADisplayLink, from: CGFloat, to: CGFloat) {
+            self.displayLink = displayLink
+            self.from = from
+            self.to = to
+            self.displayLink.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
+            len = from - to
+        }
+    }
+    
     
     var animating = false
     

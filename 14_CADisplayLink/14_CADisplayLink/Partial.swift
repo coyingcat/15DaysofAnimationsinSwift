@@ -7,24 +7,49 @@
 
 import UIKit
 
+
+
+
+
+
+
 class Partial: UIView {
 
     
+    
+    class Helper{
+        let duration: TimeInterval
+        var count: TimeInterval
+        let total: TimeInterval
+        
+        init(lasting time: TimeInterval){
+            duration = time
+            total = time * 20
+            count = time * 20
+        }
+        
+        
+        func reset(){
+            count = total
+        }
+        
+        var progress: CGFloat{
+            let rest = total - count
+            return CGFloat(rest / total)
+        }
+    }
+    
+    
     var animating = false
-    
     var timer: CADisplayLink!
-    
-    let duration: TimeInterval
     
     var lastSelectedIndex: Int?
     var selectedIndex: Int?
     
-    var count: TimeInterval
-    let total: TimeInterval
+    let helper: Helper
+    
     override init(frame: CGRect) {
-        duration = 3
-        total = duration * 20
-        count = duration * 20
+        helper = Helper(lasting: 3)
         super.init(frame: frame)
         timer = CADisplayLink(target: self, selector: #selector(Partial.tick))
         timer.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
@@ -32,9 +57,7 @@ class Partial: UIView {
     
     
     required init?(coder: NSCoder) {
-        duration = 3
-        total = duration * 20
-        count = duration * 20
+        helper = Helper(lasting: 3)
         super.init(coder: coder)
         timer = CADisplayLink(target: self, selector: #selector(Partial.tick))
         timer.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
@@ -43,6 +66,8 @@ class Partial: UIView {
     func startAnimation(_ idx: Int){
         guard selectedIndex != idx else { return }
         animating = true
+        selectedIndex = idx
+        helper.reset()
     }
     
     
@@ -51,11 +76,9 @@ class Partial: UIView {
     override func draw(_ rect: CGRect) {
         // Drawing code
 
-        let rest = total - count
-        let progress: CGFloat = CGFloat(rest / total)
         let height = rect.height
         let topY: CGFloat = 100
-        let deltaHeight = -1 * topY * progress
+        let deltaHeight = -1 * topY * helper.progress
         
         // print("delta: \(deltaHeight)")
         
@@ -72,7 +95,15 @@ class Partial: UIView {
         let path = UIBezierPath()
         UIColor.blue.setFill()
         path.move(to: topLeft)
-        path.addQuadCurve(to: topMid, controlPoint: CGPoint(x: fourthLhs, y: deltaHeight))
+        switch selectedIndex{
+        case 0:
+            path.addQuadCurve(to: topMid, controlPoint: CGPoint(x: fourthLhs, y: deltaHeight))
+        case 1:
+            path.addLine(to: topMid)
+            path.addQuadCurve(to: topRight, controlPoint: CGPoint(x: fourthRhs, y: deltaHeight))
+        default:
+            ()
+        }
         path.addLine(to: topRight)
         path.addLine(to: bottomRight)
         path.addLine(to: bottomLeft)
@@ -84,11 +115,11 @@ class Partial: UIView {
     
     
     @objc func tick(){
-        guard animating, count >= 0 else {
+        guard animating, helper.count >= 0 else {
             animating = false
             return
         }
-        count -= 1
+        helper.count -= 1
         setNeedsDisplay()
     }
     
