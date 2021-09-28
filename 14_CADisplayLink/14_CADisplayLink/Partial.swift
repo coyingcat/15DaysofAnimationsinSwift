@@ -14,28 +14,35 @@ class Partial: UIView {
     
     var timer: CADisplayLink!
     
-    let duration: TimeInterval = 3
+    let duration: TimeInterval
     
     var lastSelectedIndex: Int?
     var selectedIndex: Int?
     
+    var count: TimeInterval
+    let total: TimeInterval
     override init(frame: CGRect) {
+        duration = 3
+        total = duration * 20
+        count = duration * 20
         super.init(frame: frame)
-        timer = CADisplayLink(target: self, selector: #selector(JellyView.tick))
+        timer = CADisplayLink(target: self, selector: #selector(Partial.tick))
+        timer.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
     }
     
     
     required init?(coder: NSCoder) {
+        duration = 3
+        total = duration * 20
+        count = duration * 20
         super.init(coder: coder)
-        timer = CADisplayLink(target: self, selector: #selector(JellyView.tick))
+        timer = CADisplayLink(target: self, selector: #selector(Partial.tick))
+        timer.add(to: RunLoop.current, forMode: RunLoop.Mode.default)
     }
     
     func startAnimation(_ idx: Int){
         guard selectedIndex != idx else { return }
         animating = true
-        DispatchQueue.main.asyncAfter(deadline: .now() + duration) {
-            self.animating = false
-        }
     }
     
     
@@ -43,15 +50,11 @@ class Partial: UIView {
     // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
         // Drawing code
-        guard let layer = layer.presentation() else { return }
-        let to: CGFloat = 100
-        let len: CGFloat = 100
-        var progress: CGFloat = 1
-        if animating{
-            progress = 1 - (layer.position.y - to) / len
-        }
+
+        let rest = total - count
+        let progress: CGFloat = CGFloat(rest / total)
         let height = rect.height
-        let deltaHeight = height * (1 - abs(progress)) * 0.6
+        let deltaHeight = 100 * progress
         
         // print("delta: \(deltaHeight)")
         
@@ -80,7 +83,11 @@ class Partial: UIView {
     
     
     @objc func tick(){
-        guard animating else {return}
+        guard animating, count >= 0 else {
+            animating = false
+            return
+        }
+        count -= 1
         setNeedsDisplay()
     }
     
