@@ -53,6 +53,10 @@ class JellyView: UIView {
         }
         let height = rect.height
         let deltaHeight = height / 2 * (0.5 - abs(progress - 0.5))
+        // let deltaHeight = height * (1 - abs(progress)) * 0.6
+        
+        print("delta: \(deltaHeight)")
+        
         let topLeft = CGPoint(x: 0, y: deltaHeight)
         let topRight = CGPoint(x: rect.width, y: deltaHeight)
         let bottomLeft = CGPoint(x: 0, y: height)
