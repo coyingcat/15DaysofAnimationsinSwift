@@ -47,9 +47,9 @@ class JellyView: UIView {
         // Drawing code
         guard let info = helper, let layer = layer.presentation() else { return }
         
-        var progress: CGFloat = 1 - (layer.position.y - info.to) / (info.from - info.to)
+        var progress: CGFloat = 1
         if animating{
-            progress = 1
+            progress = 1 - (layer.position.y - info.to) / (info.from - info.to)
         }
         let height = rect.height
         let deltaHeight = height / 2 * (0.5 - abs(progress - 0.5))

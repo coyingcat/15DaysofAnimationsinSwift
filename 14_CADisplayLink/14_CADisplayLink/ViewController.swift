@@ -47,7 +47,7 @@ class ViewController: UIViewController {
         
         let from = view.bounds.height - jelly.bounds.height / 2
         let to: CGFloat = 100
-        
+        jelly.backgroundColor = UIColor.clear
         jelly.center = CGPoint(x: jelly.center.x, y: from)
         jelly.startAnimation(from, to)
         UIView.animate(withDuration: 3, delay: 0, usingSpringWithDamping: 0.85, initialSpringVelocity: 0, options: []) {
