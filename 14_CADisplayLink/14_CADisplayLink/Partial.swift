@@ -49,7 +49,15 @@ class Partial: UIView {
         
         var selectedIndex: Int?
         
-        var needsReset: Bool?
+        var intervals = 0
+        
+        var needsReset: Bool?{
+            didSet{
+                if needsReset == false{
+                    intervals = 100
+                }
+            }
+        }
         
         var currentIndex: Int?{
             if needsReset == nil{
@@ -60,8 +68,6 @@ class Partial: UIView {
             }
         }
     }
-    
-    var intervals = 0
     
     var animating = false
     var timer: CADisplayLink!
@@ -146,7 +152,10 @@ class Partial: UIView {
     @objc func tick(){
         guard animating else {   return   }
         
-        guard helper.count >= 0 else {  return }
+        guard selectInfo.intervals <= 0 else {
+            selectInfo.intervals -= 1
+            return
+        }
             
             
         guard helper.count >= 0 else {
