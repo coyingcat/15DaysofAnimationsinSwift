@@ -26,8 +26,7 @@ typedef void(^FlyingBlock)(void);
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        [self __basicSetting];
-        [self __pageSetting];
+        [self initSetting];
     }
     return self;
 }
@@ -35,21 +34,17 @@ typedef void(^FlyingBlock)(void);
 - (instancetype)init {
     self = [super init];
     if (self) {
-        [self __basicSetting];
-        [self __pageSetting];
+        [self initSetting];
     }
     return self;
 }
 
-- (void)__basicSetting {
+- (void)initSetting {
     self.backgroundColor = [UIColor whiteColor];
     _duration = 10;
     _isTroting = NO;
     self.hidden = YES;
     _trotViewArr = [NSMutableArray array];
-}
-
-- (void)__pageSetting {
     
     _trotContaierView = [[UIView alloc] init];
     _trotContaierView.clipsToBounds = YES;
