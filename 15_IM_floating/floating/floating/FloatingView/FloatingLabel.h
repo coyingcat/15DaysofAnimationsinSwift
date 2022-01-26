@@ -19,7 +19,7 @@ typedef void(^CCZTrotingStopBlock)(void);
 @interface FloatingLabel : FloatingView
 
 @property (nonatomic, strong, readonly) UILabel *currentLabel;
-//礼物跑马灯相关
+//跑马灯相关
 @property (nonatomic, strong) NSMutableArray *tipIdList;
 @property (nonatomic, copy) NSString *currentGiftId;
 @property (nonatomic, copy) CCZTrotingStartBlock giftStartBlock;

@@ -44,12 +44,12 @@
                 [weakSelf addTrotAttribute:nil];
             }
         }
-        // 移除礼物id
+        // 移除id
         if (weakSelf.tipIdList.count) {
             [weakSelf.tipIdList removeObjectAtIndex:0];
         }
         
-        // 当无礼物id时  说明已全部播放完
+        // 当无id时  说明已全部播放完
         if (weakSelf.tipIdList.count == 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (weakSelf.giftStopBlock) {
