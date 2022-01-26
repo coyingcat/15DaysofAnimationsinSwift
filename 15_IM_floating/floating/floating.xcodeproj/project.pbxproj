@@ -13,9 +13,9 @@
 		2629D82D27A1A9CB00D4D088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2629D82B27A1A9CB00D4D088 /* Main.storyboard */; };
 		2629D82F27A1A9CF00D4D088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2629D82E27A1A9CF00D4D088 /* Assets.xcassets */; };
 		2629D83227A1A9CF00D4D088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2629D83027A1A9CF00D4D088 /* LaunchScreen.storyboard */; };
-		2629D84027A1AA0C00D4D088 /* CCZTrotingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83B27A1AA0C00D4D088 /* CCZTrotingLabel.m */; };
-		2629D84127A1AA0C00D4D088 /* CCZTrotingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83D27A1AA0C00D4D088 /* CCZTrotingView.m */; };
-		2629D84227A1AA0C00D4D088 /* CCZTrotingAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83E27A1AA0C00D4D088 /* CCZTrotingAttribute.m */; };
+		2629D84027A1AA0C00D4D088 /* FloatingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83B27A1AA0C00D4D088 /* FloatingLabel.m */; };
+		2629D84127A1AA0C00D4D088 /* FloatingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83D27A1AA0C00D4D088 /* FloatingView.m */; };
+		2629D84227A1AA0C00D4D088 /* FloatingAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 2629D83E27A1AA0C00D4D088 /* FloatingAttribute.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,12 +27,12 @@
 		2629D82E27A1A9CF00D4D088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2629D83127A1A9CF00D4D088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2629D83327A1A9CF00D4D088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2629D83A27A1AA0C00D4D088 /* CCZTrotingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCZTrotingView.h; sourceTree = "<group>"; };
-		2629D83B27A1AA0C00D4D088 /* CCZTrotingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCZTrotingLabel.m; sourceTree = "<group>"; };
-		2629D83C27A1AA0C00D4D088 /* CCZTrotingAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCZTrotingAttribute.h; sourceTree = "<group>"; };
-		2629D83D27A1AA0C00D4D088 /* CCZTrotingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCZTrotingView.m; sourceTree = "<group>"; };
-		2629D83E27A1AA0C00D4D088 /* CCZTrotingAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCZTrotingAttribute.m; sourceTree = "<group>"; };
-		2629D83F27A1AA0C00D4D088 /* CCZTrotingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCZTrotingLabel.h; sourceTree = "<group>"; };
+		2629D83A27A1AA0C00D4D088 /* FloatingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingView.h; sourceTree = "<group>"; };
+		2629D83B27A1AA0C00D4D088 /* FloatingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingLabel.m; sourceTree = "<group>"; };
+		2629D83C27A1AA0C00D4D088 /* FloatingAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingAttribute.h; sourceTree = "<group>"; };
+		2629D83D27A1AA0C00D4D088 /* FloatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingView.m; sourceTree = "<group>"; };
+		2629D83E27A1AA0C00D4D088 /* FloatingAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingAttribute.m; sourceTree = "<group>"; };
+		2629D83F27A1AA0C00D4D088 /* FloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingLabel.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +80,12 @@
 		2629D83927A1AA0C00D4D088 /* FloatingView */ = {
 			isa = PBXGroup;
 			children = (
-				2629D83A27A1AA0C00D4D088 /* CCZTrotingView.h */,
-				2629D83B27A1AA0C00D4D088 /* CCZTrotingLabel.m */,
-				2629D83C27A1AA0C00D4D088 /* CCZTrotingAttribute.h */,
-				2629D83D27A1AA0C00D4D088 /* CCZTrotingView.m */,
-				2629D83E27A1AA0C00D4D088 /* CCZTrotingAttribute.m */,
-				2629D83F27A1AA0C00D4D088 /* CCZTrotingLabel.h */,
+				2629D83A27A1AA0C00D4D088 /* FloatingView.h */,
+				2629D83B27A1AA0C00D4D088 /* FloatingLabel.m */,
+				2629D83C27A1AA0C00D4D088 /* FloatingAttribute.h */,
+				2629D83D27A1AA0C00D4D088 /* FloatingView.m */,
+				2629D83E27A1AA0C00D4D088 /* FloatingAttribute.m */,
+				2629D83F27A1AA0C00D4D088 /* FloatingLabel.h */,
 			);
 			path = FloatingView;
 			sourceTree = "<group>";
@@ -164,9 +164,9 @@
 				2629D82A27A1A9CB00D4D088 /* ViewController.swift in Sources */,
 				2629D82627A1A9CB00D4D088 /* AppDelegate.swift in Sources */,
 				2629D82827A1A9CB00D4D088 /* SceneDelegate.swift in Sources */,
-				2629D84127A1AA0C00D4D088 /* CCZTrotingView.m in Sources */,
-				2629D84027A1AA0C00D4D088 /* CCZTrotingLabel.m in Sources */,
-				2629D84227A1AA0C00D4D088 /* CCZTrotingAttribute.m in Sources */,
+				2629D84127A1AA0C00D4D088 /* FloatingView.m in Sources */,
+				2629D84027A1AA0C00D4D088 /* FloatingLabel.m in Sources */,
+				2629D84227A1AA0C00D4D088 /* FloatingAttribute.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

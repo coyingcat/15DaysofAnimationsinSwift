@@ -1,22 +1,22 @@
 //
-//  CCZTrotingLabel.h
+//  FloatingLabel.h
 //  CCZTrotView
 //
 //  Created by  on 16/9/25.
 //  Copyright © 2016年 . All rights reserved.
 //
 
-/// 使用时只需要用这个封装好的 CCZTrotingLabel就可以了
+/// 使用时只需要用这个封装好的 FloatingLabel就可以了
 
-#import "CCZTrotingView.h"
-#import "CCZTrotingAttribute.h"
+#import "FloatingView.h"
+#import "FloatingAttribute.h"
 
 
 typedef void(^CCZTrotingStartBlock)(NSString *giftID);
 typedef void(^CCZTrotingStopBlock)(void);
 
 
-@interface CCZTrotingLabel : CCZTrotingView
+@interface FloatingLabel : FloatingView
 
 @property (nonatomic, strong, readonly) UILabel *currentLabel;
 //礼物跑马灯相关
@@ -26,7 +26,7 @@ typedef void(^CCZTrotingStopBlock)(void);
 @property (nonatomic, copy) CCZTrotingStopBlock giftStopBlock;
 
 
-- (void)addTrotAttribute:(CCZTrotingAttribute *)attribute;
+- (void)addTrotAttribute:(FloatingAttribute *)attribute;
 - (void)addTextArray:(NSArray *)textArray;
 - (void)addAttributeArray:(NSArray *)attArray;
 

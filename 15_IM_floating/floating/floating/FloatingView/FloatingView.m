@@ -1,15 +1,15 @@
 //
-//  CCZTrotingView.m
+//  FloatingView.m
 //  CCZTrotView
 //
 //  Created by  on 16/9/22.
 //  Copyright © 2016年 . All rights reserved.
 //
 
-#import "CCZTrotingView.h"
+#import "FloatingView.h"
 
 typedef void(^CCZTrotingBlock)(void);
-@interface CCZTrotingView ()<CAAnimationDelegate>
+@interface FloatingView ()<CAAnimationDelegate>
 @property (nonatomic, assign) CGSize size;
 
 @property (nonatomic, strong) CAKeyframeAnimation *trotingXAnimation;
@@ -20,7 +20,7 @@ typedef void(^CCZTrotingBlock)(void);
 @property (nonatomic, copy)   CCZTrotingBlock trotingBlock;
 @end
 
-@implementation CCZTrotingView
+@implementation FloatingView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];

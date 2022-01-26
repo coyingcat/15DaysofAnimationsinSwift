@@ -1,5 +1,5 @@
 //
-//  CCZTrotingView.h
+//  FloatingView.h
 //  CCZTrotView
 //
 //  Created by  on 16/9/22.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CCZTrotingView : UIView
+@interface FloatingView : UIView
 
 @property (nonatomic, strong) UIView *currentTrotView;  /**< 当前正在滚动的view*/
 @property (nonatomic, strong) UIView *trotContaierView;

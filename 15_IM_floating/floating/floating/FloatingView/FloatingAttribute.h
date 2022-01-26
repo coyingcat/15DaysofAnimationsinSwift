@@ -1,5 +1,5 @@
 //
-//  CCZTrotingAttribute.h
+//  FloatingAttribute.h
 //  CCZTrotView
 //
 //  Created by  on 16/9/25.
@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CCZTrotingAttribute : NSObject
+@interface FloatingAttribute : NSObject
 @property (nonatomic, copy)   NSString *text;
 @property (nonatomic, strong) NSAttributedString *attribute;
 @property (nonatomic, copy) NSString *identifier; //／ 这个属性可以用作特殊用途

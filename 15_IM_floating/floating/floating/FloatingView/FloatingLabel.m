@@ -1,20 +1,20 @@
 //
-//  CCZTrotingLabel.m
+//  FloatingLabel.m
 //  CCZTrotView
 //
 //  Created by  on 16/9/25.
 //  Copyright © 2016年 . All rights reserved.
 //
 
-#import "CCZTrotingLabel.h"
+#import "FloatingLabel.h"
 
-@interface CCZTrotingLabel ()
+@interface FloatingLabel ()
 @property (nonatomic, strong, readwrite) UILabel *currentLabel;
 @property (nonatomic, strong) NSMutableArray *attributeArr;
 @property (nonatomic, assign) NSUInteger index; // 控制滚动的文本显示
 @end
 
-@implementation CCZTrotingLabel
+@implementation FloatingLabel
 
 - (instancetype)init {
     self = [super init];
@@ -76,12 +76,12 @@
 
 #pragma mark - add att
 
-- (void)addTrotAttribute:(CCZTrotingAttribute *)attribute {
+- (void)addTrotAttribute:(FloatingAttribute *)attribute {
     if (attribute) {
         [self.attributeArr addObject:attribute];
     }
     
-    CCZTrotingAttribute *trotingAtt = self.attributeArr[self.index];
+    FloatingAttribute *trotingAtt = self.attributeArr[self.index];
     
     if (!_currentLabel) {
         _currentLabel = [[UILabel alloc] init];
@@ -96,7 +96,7 @@
 }
 
 - (void)addText:(NSString *)text {
-    CCZTrotingAttribute *trotingAtt = [[CCZTrotingAttribute alloc] init];
+    FloatingAttribute *trotingAtt = [[FloatingAttribute alloc] init];
     trotingAtt.text = text;
     [self addTrotAttribute:trotingAtt];
 }
@@ -112,13 +112,13 @@
 
 - (void)addAttributeArray:(NSArray *)attArray {
     for (id att in attArray) {
-        if ([att isKindOfClass:[CCZTrotingAttribute class]]) {
+        if ([att isKindOfClass:[FloatingAttribute class]]) {
             [self addTrotAttribute:att];
         }
     }
 }
 
-- (void)trotingWithAttribute:(CCZTrotingAttribute *)att {
+- (void)trotingWithAttribute:(FloatingAttribute *)att {
     _currentLabel.text = att.text;
     if (att.attribute) {
         _currentLabel.attributedText = att.attribute;
