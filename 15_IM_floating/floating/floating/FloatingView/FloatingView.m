@@ -10,7 +10,7 @@
 
 typedef void(^FlyingBlock)(void);
 @interface FloatingView ()<CAAnimationDelegate>
-@property (nonatomic, assign) CGSize size;
+
 
 @property (nonatomic, strong) CAKeyframeAnimation *flyingXAnimation;
 
@@ -69,11 +69,7 @@ typedef void(^FlyingBlock)(void);
     }
     
    
-        trotView.frame = CGRectMake(trotContainerSize.width, (_size.height - trotSize.height) / 2, trotSize.width, trotSize.height);
-        UIView * label = [self.trotViewArr firstObject];
-        CGRect labelFrame = label.frame;
-        CGPoint labelOrigin = CGPointMake(labelFrame.origin.x, (self.bounds.size.height - labelFrame.size.height) / 2);
-        label.frame = CGRectMake(labelOrigin.x, labelOrigin.y, labelFrame.size.width, labelFrame.size.height);
+        trotView.frame = CGRectMake(trotContainerSize.width, (self.bounds.size.height - trotSize.height) / 2, trotSize.width, trotSize.height);
         CGFloat len = (trotContainerSize.width + trotSize.width);
         self.flyingXAnimation.values = @[@(0), @(- trotContainerSize.width), @(- trotContainerSize.width), @(- len)];
         NSTimeInterval pause = 3.0;
