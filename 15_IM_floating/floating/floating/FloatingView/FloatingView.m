@@ -12,9 +12,10 @@ typedef void(^CCZTrotingBlock)(void);
 @interface FloatingView ()<CAAnimationDelegate>
 @property (nonatomic, assign) CGSize size;
 
-@property (nonatomic, strong) CAKeyframeAnimation *trotingXAnimation;
+@property (nonatomic, strong) CAKeyframeAnimation *flyingXAnimation;
 
-@property (nonatomic, strong) NSMutableArray *trotViewArr;  /**< 用于存放待滚动的view的*/
+@property (nonatomic, strong) NSMutableArray *trotViewArr;
+/**< 用于存放待滚动的view的*/
 @property (nonatomic, copy)   CCZTrotingBlock stopBlock;
 @property (nonatomic, copy)   CCZTrotingBlock startBlock;
 @property (nonatomic, copy)   CCZTrotingBlock trotingBlock;
@@ -79,32 +80,32 @@ typedef void(^CCZTrotingBlock)(void);
         CGPoint labelOrigin = CGPointMake(labelFrame.origin.x, (self.bounds.size.height - labelFrame.size.height) / 2);
         label.frame = CGRectMake(labelOrigin.x, labelOrigin.y, labelFrame.size.width, labelFrame.size.height);
         CGFloat len = (trotContainerSize.width + trotSize.width);
-        self.trotingXAnimation.values = @[@(0), @(- trotContainerSize.width), @(- trotContainerSize.width), @(- len)];
+        self.flyingXAnimation.values = @[@(0), @(- trotContainerSize.width), @(- trotContainerSize.width), @(- len)];
         NSTimeInterval pause = 3.0;
         NSTimeInterval total = _duration + pause;
         NSTimeInterval percent = trotContainerSize.width / len;
         NSTimeInterval widthTime = percent * _duration /total ;
-        self.trotingXAnimation.keyTimes = @[@0, @(widthTime), @(pause / total + widthTime), @(1)];
+        self.flyingXAnimation.keyTimes = @[@0, @(widthTime), @(pause / total + widthTime), @(1)];
     
     if ([trotView.layer animationForKey:@"trotingX"]) {
         [trotView.layer removeAnimationForKey:@"trotingX"];
     }
 
-        self.trotingXAnimation.removedOnCompletion = NO;
-        self.trotingXAnimation.repeatCount = 0;
-        [trotView.layer addAnimation:self.trotingXAnimation forKey:@"trotingX"];
+        self.flyingXAnimation.removedOnCompletion = NO;
+        self.flyingXAnimation.repeatCount = 0;
+        [trotView.layer addAnimation:self.flyingXAnimation forKey:@"trotingX"];
 }
 
-- (CAKeyframeAnimation *)trotingXAnimation {
-    if (!_trotingXAnimation) {
-        _trotingXAnimation = [CAKeyframeAnimation animation];
-        _trotingXAnimation.keyPath = @"transform.translation.x";
-        _trotingXAnimation.delegate = self;
-        _trotingXAnimation.duration = _duration;
-        _trotingXAnimation.fillMode = kCAFillModeForwards;
-        _trotingXAnimation.removedOnCompletion = NO;
+- (CAKeyframeAnimation *)flyingXAnimation {
+    if (!_flyingXAnimation) {
+        _flyingXAnimation = [CAKeyframeAnimation animation];
+        _flyingXAnimation.keyPath = @"transform.translation.x";
+        _flyingXAnimation.delegate = self;
+        _flyingXAnimation.duration = _duration;
+        _flyingXAnimation.fillMode = kCAFillModeForwards;
+        _flyingXAnimation.removedOnCompletion = NO;
     }
-    return _trotingXAnimation;
+    return _flyingXAnimation;
 }
 
 
@@ -151,7 +152,7 @@ typedef void(^CCZTrotingBlock)(void);
 - (void)setDuration:(NSTimeInterval)duration {
     _duration = duration;
     
-    self.trotingXAnimation.duration = duration;
+    self.flyingXAnimation.duration = duration;
 }
 
 #pragma mark - Animation delegate
