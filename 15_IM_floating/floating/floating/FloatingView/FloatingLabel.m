@@ -8,7 +8,7 @@
 
 #import "FloatingLabel.h"
 
-@interface FloatingLabel ()
+@interface FloatingLabel()
 @property (nonatomic, strong, readwrite) UILabel *currentLabel;
 @property (nonatomic, strong) NSMutableArray *attributeArr;
 @property (nonatomic, assign) NSUInteger index; // 控制滚动的文本显示
@@ -34,7 +34,7 @@
 
 - (void)basicSetting {
     self.index = 0;
-    self.giftIdArr = [NSMutableArray array];
+    self.tipIdList = [NSMutableArray array];
     
     __weak typeof(self) weakSelf = self;
     [self trotingStop:^{
@@ -45,12 +45,12 @@
             }
         }
         // 移除礼物id
-        if (weakSelf.giftIdArr.count) {
-            [weakSelf.giftIdArr removeObjectAtIndex:0];
+        if (weakSelf.tipIdList.count) {
+            [weakSelf.tipIdList removeObjectAtIndex:0];
         }
         
         // 当无礼物id时  说明已全部播放完
-        if (weakSelf.giftIdArr.count == 0) {
+        if (weakSelf.tipIdList.count == 0) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (weakSelf.giftStopBlock) {
                     weakSelf.giftStopBlock();
@@ -61,7 +61,7 @@
     
     //开始滚动
     [self trotingStart:^{
-        weakSelf.currentGiftId = weakSelf.giftIdArr.firstObject;
+        weakSelf.currentGiftId = weakSelf.tipIdList.firstObject;
         if (weakSelf.giftStartBlock) {
             weakSelf.giftStartBlock(weakSelf.currentGiftId);
         }

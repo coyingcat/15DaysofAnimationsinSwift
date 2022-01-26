@@ -20,7 +20,7 @@ typedef void(^CCZTrotingStopBlock)(void);
 
 @property (nonatomic, strong, readonly) UILabel *currentLabel;
 //礼物跑马灯相关
-@property (nonatomic, strong) NSMutableArray *giftIdArr;
+@property (nonatomic, strong) NSMutableArray *tipIdList;
 @property (nonatomic, copy) NSString *currentGiftId;
 @property (nonatomic, copy) CCZTrotingStartBlock giftStartBlock;
 @property (nonatomic, copy) CCZTrotingStopBlock giftStopBlock;
