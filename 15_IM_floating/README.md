@@ -1,1 +1,1 @@
-### [blog @juejin](https://juejin.cn/post/7057577866862526477)
+### [blog @juejin   ,   飘屏，IM 动画队列的简单例子  ](https://juejin.cn/post/7057577866862526477)
