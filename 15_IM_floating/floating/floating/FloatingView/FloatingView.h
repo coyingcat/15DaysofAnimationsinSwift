@@ -1,6 +1,6 @@
 //
 //  FloatingView.h
-//  CCZTrotView
+//  
 //
 //  Created by  on 16/9/22.
 //  Copyright © 2016年 . All rights reserved.

@@ -33,6 +33,7 @@
 		2629D83D27A1AA0C00D4D088 /* FloatingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingView.m; sourceTree = "<group>"; };
 		2629D83E27A1AA0C00D4D088 /* FloatingAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FloatingAttribute.m; sourceTree = "<group>"; };
 		2629D83F27A1AA0C00D4D088 /* FloatingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FloatingLabel.h; sourceTree = "<group>"; };
+		2629D84627A1ABA300D4D088 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +66,7 @@
 		2629D82427A1A9CB00D4D088 /* floating */ = {
 			isa = PBXGroup;
 			children = (
+				2629D84627A1ABA300D4D088 /* Bridging-Header.h */,
 				2629D83927A1AA0C00D4D088 /* FloatingView */,
 				2629D82527A1A9CB00D4D088 /* AppDelegate.swift */,
 				2629D82727A1A9CB00D4D088 /* SceneDelegate.swift */,
@@ -332,6 +334,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hahaha.666.com.floating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = floating/FloatingView/FloatingLabel.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -361,6 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.hahaha.666.com.floating;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = floating/FloatingView/FloatingLabel.h;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
