@@ -8,7 +8,7 @@
 
 #import "FloatingView.h"
 
-typedef void(^CCZTrotingBlock)(void);
+typedef void(^FlyingBlock)(void);
 @interface FloatingView ()<CAAnimationDelegate>
 @property (nonatomic, assign) CGSize size;
 
@@ -16,9 +16,9 @@ typedef void(^CCZTrotingBlock)(void);
 
 @property (nonatomic, strong) NSMutableArray *trotViewArr;
 /**< 用于存放待滚动的view的*/
-@property (nonatomic, copy)   CCZTrotingBlock stopBlock;
-@property (nonatomic, copy)   CCZTrotingBlock startBlock;
-@property (nonatomic, copy)   CCZTrotingBlock trotingBlock;
+@property (nonatomic, copy)   FlyingBlock stopBlock;
+@property (nonatomic, copy)   FlyingBlock startBlock;
+@property (nonatomic, copy)   FlyingBlock trotingBlock;
 @end
 
 @implementation FloatingView
