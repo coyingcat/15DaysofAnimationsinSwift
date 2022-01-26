@@ -86,7 +86,7 @@
     if (!_currentLabel) {
         _currentLabel = [[UILabel alloc] init];
         _currentLabel.font = [UIFont systemFontOfSize:14];
-        _currentLabel.textColor = UIColor.whiteColor;
+        _currentLabel.textColor = UIColor.redColor;
         [self trotingWithAttribute:trotingAtt];
         [self addTrotView:_currentLabel];
     } else if (!self.isTroting) {
